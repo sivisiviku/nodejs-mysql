@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const express = require("express");
 const app = express();
 const mysql = require("mysql");
@@ -6,10 +8,10 @@ const port = process.env.PORT || "3000";
 app.use(express.json());
 
 const connection = mysql.createConnection({
-  host: "eu-cdbr-west-03.cleardb.net",
-  user: "b7a1307ab38000",
-  password: "d3dd4481",
-  database: "heroku_57b2e57148eede0",
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
 
 app.get("/", (req, res) => {
